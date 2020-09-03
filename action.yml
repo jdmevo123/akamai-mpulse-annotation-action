@@ -1,24 +1,32 @@
-name: "Deploy Akamai Edgeworkers"
-description: "GitHub Action to edgerworkers via Akamai API's"
+name: "Annotate Akamai mPulse"
+description: "GitHub Action to commit annotations to Akamai mPulse"
 author: jdmevo123
 inputs:
-  edgeworkersName:
+  Auth-Token:
     description:  'Name of Edgeworker'
     required: true
-  network:
+  title:
     description: 'Network you wish to activate'
     required: true
     default: 'staging'
-  groupid:
+  start:
+    description: 'GroupID for new registrations'
+    required: true
+  text:
+    description: 'GroupID for new registrations'
+    required: true
+  domainIds:
     description: 'GroupID for new registrations'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.edgeworkersName}}
-    - ${{ inputs.network }}
-    - ${{ inputs.groupid }}
+    - ${{ inputs.Auth-Token}}
+    - ${{ inputs.title }}
+    - ${{ inputs.start }}
+    - ${{ inputs.text }}
+    - ${{ inputs.domainIds }}
 branding:
   color: orange
-  icon: cloud-lightning
+  icon: edit
