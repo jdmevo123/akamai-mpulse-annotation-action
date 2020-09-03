@@ -1,13 +1,27 @@
 #!/bin/bash
 set -o pipefail
 
-#  Set Variables
-Auth-Token=$1
-title=$2
-start=$3
-text=$3
-domainIds=$4
+# Set Variables
+userName=$1
+password=$2
+apiToken=$3
+title=$4
+start=$5
+text=$6
+domainIds=$7
 
+# Get API Token
+curl -X PUT -H "Content-type: application/json" --data-binary '{"userName":${userName}, "password":${password}}' \
+  "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens"
+Auth-Token=
+example response = {"token":"da7be4d72030656559f3e41a98924a6b2a544730"}
+
+# Get API Token SSO
+curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":${apiToken}}' \
+  "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens"
+Auth-Token=
+
+# Execute Annotation
 if [ -z "$domainIds" ]; then
    data='{ "title":${title}, "start":${start}, "text":${text} }'
 fi
