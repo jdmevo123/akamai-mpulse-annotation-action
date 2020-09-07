@@ -15,3 +15,8 @@ jobs:
         with:
           type: 'tag'
           ref: 'faketag'
+      - name: Upload file annotationID.txt
+        uses: actions/upload-artifact@v1
+        with:
+          name: annotationID
+          path: annotationID.txt
