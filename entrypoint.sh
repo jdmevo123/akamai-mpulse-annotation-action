@@ -36,6 +36,9 @@ annotationID=$(curl -X POST \
      "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1" | jq '.["id"]' | tr -d '"')
 
 if [ -n "$annotationID" ]; then
-  echo "success"
-  echo $annotationID > ~/annotationID.txt
+  echo "success : $annotationID"
+  echo $annotationID > annotationID.txt
+fi
+if [ -z "$annotationID" ]; then
+  echo "Failed : $annotationID" && exit 123;
 fi
