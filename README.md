@@ -22,7 +22,7 @@ Follow this guide to retrieve your apiToken.
 
 ## Inputs
 
-### `apiToken`
+### `Auth-Token`
 **Required**
 API Token: used to authenticate against the Akamai platform
 
@@ -56,11 +56,23 @@ steps:
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
         id: Send Deployment Annotation
         with:
-          apiToken: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
-          title: ${{ github.event.repository.name }} - Build: ${{ github.run_number }}
+          Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+          title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
+          text: ${{ github.event.head_commit.message }}
+```
+If you wish to submit domain id's, use the following YAML:
+```yaml
+steps:
+      - name: Annotation - start of deployment
+        uses: jdmevo123/akamai-mpulse-annotation-action@1.0
+        id: Send Deployment Annotation
+        with:
+          Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+          title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
           text: ${{ github.event.head_commit.message }}
           domainIds: "123,124" #Optional  #Domain ID's split by comma. i.e. "123,124"
 ```
+
 ## License
 
 This project is distributed under the [MIT license](LICENSE.md).
