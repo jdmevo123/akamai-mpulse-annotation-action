@@ -6,9 +6,14 @@ set -o pipefail
 apiToken=$1
 title=$2
 text=$3
-domainIds=$4 || ""
-time="1599439052853" #$3
+time=$(date +%s000)
 
+if [ -n "$4" ]; then
+  domainIds=$4
+fi
+if [ -z "$4" ]; then
+  domainIds=""
+fi
 # Get API Token SSO
 authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]' | tr -d '"')
