@@ -52,9 +52,9 @@ Place in a `.yml` file such as this one in your `.github/workflows` folder. [Ref
 
 ```yaml
 steps:
-      - name: test
+      - name: Annotation - start of deployment
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Send Annotation
+        id: Send Deployment Annotation
         with:
           apiToken: ${{ secrets.apiToken }} 
           title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
@@ -79,7 +79,7 @@ steps:
       #...... Some other deployment steps
       - name: Annotation - Send end time for deployment
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Ammend Annotation
+        id: Ammend Deployment Annotation
         with:
           apiToken: ${{ secrets.apiToken }} 
           title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
