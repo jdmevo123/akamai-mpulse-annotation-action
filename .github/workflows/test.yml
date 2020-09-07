@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: annotationID
-          path: annotationID.txt
+          path: ~/annotationID.txt
