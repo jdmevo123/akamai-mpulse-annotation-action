@@ -8,7 +8,10 @@
 
 # Annotate Akamai mPulse  
 
-This action calls the Akamai Api's to submit mPulse annotations to the Akamai platform. 
+This action calls the Akamai Api's to submit <a href="https://developer.akamai.com/akamai-mpulse-real-user-monitoring-solution" target="_blank">mPulse</a> annotations to the Akamai platform. 
+<p align="center">
+    <img alt="mPulse" width="793" height="375" src="https://developer.akamai.com/sites/default/files/styles/hero/public/2018-11/banner-mpulse-R2.png?itok=TK3ibVct"/>
+</p>
 
 ## Usage
 
@@ -18,7 +21,7 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 You need to declare a `AKAMAI_mPulseApiToken` secret in your repository.
 
-Follow this guide to retrieve your apiToken.
+<a href="https://learn.akamai.com/en-us/webhelp/cloudtest/cloudtest/GUID-2778BD58-45C9-4DAD-9440-822A6471AF68.html" target="_blank">Follow this guide to retrieve your apiToken.</a>
 
 ## Inputs
 
