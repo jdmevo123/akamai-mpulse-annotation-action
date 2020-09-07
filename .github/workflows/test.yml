@@ -11,6 +11,6 @@ jobs:
         uses: ./
         id: test
         with:
-          apiToken: ${{ secrets.AKAMAI_mPulseApiToken }} 
-          title: ${{ github.event.repository.name }} + "- Build:" + ${{ github.run_number }}
-          text: ${{ github.event.release.tag_name }}
+          apiToken: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+          title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
+          text: ${{ github.event.head_commit.message }}
