@@ -16,7 +16,7 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 ## Authentication
 
-You need to declare a `mPulseApiToken` secret in your repository.
+You need to declare a `AKAMAI_mPulseApiToken` secret in your repository.
 
 Follow this guide to retrieve your apiToken.
 
@@ -56,10 +56,10 @@ steps:
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
         id: Send Deployment Annotation
         with:
-          apiToken: ${{ secrets.apiToken }} 
-          title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
-          text: ${{ github.event.release.tag_name }}
-          domainIds: "" #Optional: Domain ID's split by comma. i.e. "123,123"
+          apiToken: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+          title: ${{ github.event.repository.name }} - Build: ${{ github.run_number }}
+          text: ${{ github.event.head_commit.message }}
+          domainIds: "123,124" #Optional  #Domain ID's split by comma. i.e. "123,124"
 ```
 ## License
 
