@@ -57,7 +57,6 @@ Place in a `.yml` file such as this one in your `.github/workflows` folder. [Ref
 steps:
       - name: Annotation - start of deployment
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Send Deployment Annotation
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
@@ -68,7 +67,6 @@ If you wish to submit domain id's, use the following YAML:
 steps:
       - name: Annotation - start of deployment
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Send Deployment Annotation
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
