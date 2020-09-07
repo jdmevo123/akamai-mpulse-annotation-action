@@ -1,4 +1,4 @@
-FROM akamai/akamai-docker
+FROM akamai/shell
 
 LABEL "com.github.actions.name"="Akamai Mpulse Annotations"
 LABEL "com.github.actions.description"="Submit annotations to mPulse via the Akamai API's"
