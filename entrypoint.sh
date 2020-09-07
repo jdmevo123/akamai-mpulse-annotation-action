@@ -32,7 +32,7 @@ fi
 annotationID=$(curl -X POST \
      -H "X-Auth-Token: $authToken" \
      -H "Content-type: application/json" \
-     --data-binary "'$data'"\
+     --data-binary "$data"\
      "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1")
 echo $annotationID
 annotationID=$(echo $annotationID | jq '.["id"]' | tr -d '"')
