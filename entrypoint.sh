@@ -33,7 +33,10 @@ annotationID=$(curl -X POST \
      -H "X-Auth-Token: $authToken" \
      -H "Content-type: application/json" \
      --data-binary "'$data'"\
-     "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1" | jq '.["id"]' | tr -d '"')
+     "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1")
+echo $annotationID
+annotationID=$($annotationID | jq '.["id"]' | tr -d '"')
+echo $annotationID
 if [ "$annotationID" == null ]; then
   echo "Failed : Annotation ID was empty" && exit 1;
 fi
