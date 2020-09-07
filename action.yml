@@ -3,20 +3,22 @@ description: "GitHub Action to commit annotations to Akamai mPulse"
 author: jdmevo123
 inputs:
   Auth-Token:
-    description:  'Name of Edgeworker'
+    description:  'API Token for mPulse'
     required: true
   title:
-    description: 'Network you wish to activate'
+    description: 'Title of the annotation'
     required: true
-    default: 'staging'
-  start:
-    description: 'GroupID for new registrations'
+  time:
+    description: 'current time in UTC milliseconds'
     required: true
   text:
-    description: 'GroupID for new registrations'
+    description: 'Additional information'
     required: true
   domainIds:
-    description: 'GroupID for new registrations'
+    description: 'Domain Id's seperated via a comma. i.e. 123,456. Leave BLANK if you wish to apply across all domains'
+    required: true
+  annotationID:
+    description: 'Leave blank unless you wish to submit and end time on the annotation'
     required: true
 runs:
   using: 'docker'
@@ -24,9 +26,10 @@ runs:
   args:
     - ${{ inputs.Auth-Token}}
     - ${{ inputs.title }}
-    - ${{ inputs.start }}
+    - ${{ inputs.time }}
     - ${{ inputs.text }}
     - ${{ inputs.domainIds }}
+    - ${{ inputs.annotationID }}
 branding:
   color: orange
   icon: edit
