@@ -57,10 +57,10 @@ steps:
         id: Send Annotation
         with:
           apiToken: ${{ secrets.apiToken }} 
-          title: '${{ github.event.repository.name }} - Build: ${{ github.run_number }}'
-          time: ''
+          title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
+          time: ""
           text: ${{ github.event.release.tag_name }}
-          domainIds: ""
+          domainIds: "" #Domain ID's split by comma. i.e. "123,123"
           annotationID: ""
       - name: Upload file annotationID.txt
         uses: actions/upload-artifact@v1
@@ -82,10 +82,10 @@ steps:
         id: Ammend Annotation
         with:
           apiToken: ${{ secrets.apiToken }} 
-          title: '${{ github.event.repository.name }} - Build: ${{ github.run_number }}'
-          time: ''
+          title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
+          time: ""
           text: ${{ github.event.release.tag_name }}
-          domainIds: ""
+          domainIds: "" #Domain ID's split by comma. i.e. "123,123"
           annotationID: ${{ steps.set_output.outputs.annotation_id }}
 ```
 ## License
