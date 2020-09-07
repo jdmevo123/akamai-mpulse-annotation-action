@@ -34,10 +34,10 @@ annotationID=$(curl -X POST \
      -H "Content-type: application/json" \
      --data-binary "'$data'"\
      "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1" | jq '.["id"]' | tr -d '"')
-if [ "$annotationID" == null]; then
+if [ "$annotationID" == null ]; then
   echo "Failed : Annotation ID was empty" && exit 1;
 fi
-if [ -n "$annotationID"]; then
+if [ -n "$annotationID" ]; then
   echo "success : $annotationID"
   echo $annotationID > annotationID.txt
 fi
