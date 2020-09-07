@@ -16,7 +16,7 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 ## Authentication
 
-You need to declare a `apiToken` secret in your repository.
+You need to declare a `mPulseApiToken` secret in your repository.
 
 Follow this guide to retrieve your apiToken.
 
@@ -58,35 +58,8 @@ steps:
         with:
           apiToken: ${{ secrets.apiToken }} 
           title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
-          time: ""
           text: ${{ github.event.release.tag_name }}
-          domainIds: "" #Domain ID's split by comma. i.e. "123,123"
-          annotationID: ""
-      - name: Upload file annotationID.txt
-        uses: actions/upload-artifact@v1
-        with:
-          name: annotationID
-          path: annotationID.txt
-        
-      - name: Download file annotationID.txt
-        uses: actions/download-artifact@v1
-        with:
-          name: annotationID
-
-      - name: Read file post_message.txt and set output parameter
-        id: set_output
-        run: echo "::set-output name=annotation_id::$(<annotationID/annotationID.txt)"
-      #...... Some other deployment steps
-      - name: Annotation - Send end time for deployment
-        uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Ammend Deployment Annotation
-        with:
-          apiToken: ${{ secrets.apiToken }} 
-          title: "${{ github.event.repository.name }} - Build: ${{ github.run_number }}"
-          time: ""
-          text: ${{ github.event.release.tag_name }}
-          domainIds: "" #Domain ID's split by comma. i.e. "123,123"
-          annotationID: ${{ steps.set_output.outputs.annotation_id }}
+          domainIds: "" #Optional: Domain ID's split by comma. i.e. "123,123"
 ```
 ## License
 
