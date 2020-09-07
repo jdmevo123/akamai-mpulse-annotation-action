@@ -5,7 +5,7 @@ set -o pipefail
 # Set Variables
 apiToken="4b87edd6-1123-471d-9e77-a8b8991ca9f3"
 title="test" #$4
-start="1599433542355" #$5
+start="1599439052853" #$5
 text="TestingAction" #$6
 #domainIds="" #$7
 executionType="" #$8
@@ -35,7 +35,7 @@ annotationID=$(curl -X POST \
      --data-binary "'$data'"\
      "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1")
 echo $annotationID
-annotationID=$($annotationID | jq '.["id"]' | tr -d '"')
+annotationID=$(echo $annotationID | jq '.["id"]' | tr -d '"')
 echo $annotationID
 if [ "$annotationID" == null ]; then
   echo "Failed : Annotation ID was empty" && exit 1;
