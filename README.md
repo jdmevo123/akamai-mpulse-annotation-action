@@ -52,7 +52,7 @@ Place in a `.yml` file such as this one in your `.github/workflows` folder. [Ref
 
 ```yaml
 steps:
-    - name: test
+      - name: test
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
         id: Send Annotation
         with:
@@ -76,10 +76,10 @@ steps:
       - name: Read file post_message.txt and set output parameter
         id: set_output
         run: echo "::set-output name=annotation_id::$(<annotationID/annotationID.txt)"
-    #...... Some other deployment steps
-    - name: test
+      #...... Some other deployment steps
+      - name: Annotation - Send end time for deployment
         uses: jdmevo123/akamai-mpulse-annotation-action@1.0
-        id: Send Annotation
+        id: Ammend Annotation
         with:
           apiToken: ${{ secrets.apiToken }} 
           title: '${{ github.event.repository.name }} - Build: ${{ github.run_number }}'
