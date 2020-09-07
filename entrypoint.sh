@@ -14,6 +14,12 @@ fi
 if [ -z "$4" ]; then
   domainIds=""
 fi
+echo "apitoken: $apiToken"
+echo "title: $title"
+echo "text: $text"
+echo "time: $time"
+echo "domainids: $domainIds"
+
 # Get API Token SSO
 authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]' | tr -d '"')
