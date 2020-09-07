@@ -8,18 +8,12 @@ inputs:
   title:
     description: 'Title of the annotation'
     required: true
-  time:
-    description: 'current time in UTC milliseconds'
-    required: true
   text:
     description: 'Additional information'
     required: true
   domainIds:
     description: 'Domain id seperated via a comma. i.e. 123,456. Leave BLANK if you wish to apply across all domains'
-    required: true
-  annotationID:
-    description: 'Leave blank unless you wish to submit and end time on the annotation'
-    required: true
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
