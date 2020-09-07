@@ -20,10 +20,8 @@ runs:
   args:
     - ${{ inputs.Auth-Token}}
     - ${{ inputs.title }}
-    - ${{ inputs.time }}
     - ${{ inputs.text }}
     - ${{ inputs.domainIds }}
-    - ${{ inputs.annotationID }}
 branding:
   color: orange
   icon: edit
