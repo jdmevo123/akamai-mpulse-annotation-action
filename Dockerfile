@@ -1,6 +1,6 @@
 FROM akamai/shell
 
-LABEL "com.github.actions.name"="Akamai Mpulse Annotations"
+LABEL "com.github.actions.name"="Akamai mPulse Annotations"
 LABEL "com.github.actions.description"="Submit annotations to mPulse via the Akamai API's"
 LABEL "com.github.actions.icon"="edit"
 LABEL "com.github.actions.color"="orange"
