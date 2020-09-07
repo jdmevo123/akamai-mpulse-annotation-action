@@ -10,22 +10,7 @@ jobs:
       - name: test
         uses: ./
         id: test
-        env:
-          EDGERC: ${{ secrets.EDGERC }}
         with:
-          type: 'tag'
-          ref: 'faketag'
-      - name: Upload file annotationID.txt
-        uses: actions/upload-artifact@v1
-        with:
-          name: annotationID
-          path: annotationID.txt
-        
-      - name: Download file annotationID.txt
-        uses: actions/download-artifact@v1
-        with:
-          name: annotationID
-
-      - name: Read file post_message.txt and set output parameter
-        id: set_output
-        run: echo "::set-output name=post_message::$(<annotationID/annotationID.txt)"
+          apiToken: ${{ secrets.AKAMAI_mPulseApiToken }} 
+          title: ${{ github.event.repository.name }} + "- Build:" + ${{ github.run_number }}
+          text: ${{ github.event.release.tag_name }}
