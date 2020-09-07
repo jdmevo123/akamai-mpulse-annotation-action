@@ -19,4 +19,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: annotationID
-          path: ~/annotationID.txt
+          path: annotationID.txt
+        
+      - name: Download file annotationID.txt
+        uses: actions/download-artifact@v1
+        with:
+          name: annotationID
+
+      - name: Read file post_message.txt and set output parameter
+        id: set_output
+        run: echo "::set-output name=post_message::$(<annotationID/annotationID.txt)"
