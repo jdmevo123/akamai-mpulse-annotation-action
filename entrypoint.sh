@@ -14,16 +14,10 @@ fi
 if [ -z "$4" ]; then
   domainIds=""
 fi
-echo "apitoken: $apiToken"
-echo "title: $title"
-echo "text: $text"
-echo "time: $time"
-echo "domainids: $domainIds"
 
 # Get API Token SSO
 authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]' | tr -d '"')
-echo $authToken
 # Execute Annotation
 if [ "$domainIds" == "" ]; then
    data='{ "title":"'${title}'", "start":'${time}', "text":"'${text}'" }'
@@ -36,9 +30,7 @@ annotation=$(curl -X POST \
      -H "Content-type: application/json" \
      --data-binary "$data"\
      "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1")
-echo $annotation
 annotation=$(echo $annotation | jq '.["id"]' | tr -d '"')
-echo $annotation
 if [ "$annotation" == null ]; then
   echo "Failed : Annotation ID was empty" && exit 1;
 fi
