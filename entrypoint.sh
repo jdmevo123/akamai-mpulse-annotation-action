@@ -37,5 +37,5 @@ annotationID=$(curl -X POST \
 
 if [ -n "$annotationID" ]; then
   echo "success"
-  echo $annotationID > annotationID.txt
+  echo $annotationID > ~/annotationID.txt
 fi
