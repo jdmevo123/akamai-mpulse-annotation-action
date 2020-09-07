@@ -22,23 +22,23 @@ if [ "$annotationID" == "" ]; then
     if [ "$domainIds" != "" ]; then
        data='{ "title":"'${title}'", "start":'${time}', "text":"'${text}'", "domainIds":"['${domainIds}']" }'
     fi
-    annotationID=$(curl -X POST \
+    annotation=$(curl -X POST \
          -H "X-Auth-Token: $authToken" \
          -H "Content-type: application/json" \
          --data-binary "$data"\
          "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1")
-    echo $annotationID
-    annotationID=$(echo $annotationID | jq '.["id"]' | tr -d '"')
-    echo $annotationID
-    if [ "$annotationID" == null ]; then
+    echo $annotation
+    annotation=$(echo $annotation | jq '.["id"]' | tr -d '"')
+    echo $annotation
+    if [ "$annotation" == null ]; then
       echo "Failed : Annotation ID was empty" && exit 1;
     fi
-    if [ -n "$annotationID" ]; then
-      echo "success : $annotationID"
-      echo $annotationID > annotationID.txt
+    if [ -n "$annotation" ]; then
+      echo "success : $annotation"
+      echo $annotation > annotationID.txt
     fi
-    if [ -z "$annotationID" ]; then
-      echo "Failed : $annotationID" && exit 1;
+    if [ -z "$annotation" ]; then
+      echo "Failed : $annotation" && exit 1;
     fi
 fi
 
@@ -52,7 +52,7 @@ if [ "annotationID" != "" ]; then
          --data-binary "$data"\
          "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1/$annotationID")
     echo $ammend
-    ammend=$(echo $annotationID | jq '.["id"]' | tr -d '"')
+    ammend=$(echo $ammend | jq '.["id"]' | tr -d '"')
     echo $ammend
     if [ "$ammend" == null ]; then
       echo "Failed : Annotation ID was empty" && exit 1;
