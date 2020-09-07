@@ -2,47 +2,38 @@
 set -o pipefail
 
 # Set Variables
-userName=$1
-password=$2
-apiToken=$3
-title=$4
-start=$5
-text=$6
-domainIds=$7
+apiToken="4b87edd6-1123-471d-9e77-a8b8991ca9f3"
+title="test" #$4
+start="1599433543853" #$5
+text="TestingAction" #$6
+domainIds="" #$7
+executionType="" #$8
 
 # # Get API Token
 # curl -X PUT -H "Content-type: application/json" --data-binary '{"userName":${userName}, "password":${password}}' \
 #   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens"
 # Auth-Token=
 # example response = {"token":"da7be4d72030656559f3e41a98924a6b2a544730"}
-
+# curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
+#   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]'
 # Get API Token SSO
-curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":${apiToken}}' \
-  "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens"
-Auth-Token=
-
+authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
+  "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]' | tr -d '"')
+echo $authToken
 # Execute Annotation
 if [ -z "$domainIds" ]; then
-   data='{ "title":${title}, "start":${start}, "text":${text} }'
+   data='{ "title":"'${title}'", "start":'${start}', "text":"'${text}'" }'
 fi
 if [ -n "$domainIds" ]; then
-   data='{ "title":${title}, "start":${start}, "text":${text}, "domainIds":${domainIds} }'
+   data='{ "title":"'${title}'", "start":'${start}', "text":"'${text}'", "domainIds":"['${domainIds}']" }'
 fi
-
-curl -X POST \
-     -H "X-Auth-Token: ${Auth-Token}" \
+# echo '{"title":"'$title'","start":'$start',"text":"'$text'"}'
+annotationID=$(curl -X POST \
+     -H "X-Auth-Token: $authToken" \
      -H "Content-type: application/json" \
-     --data-binary '$data' \
-     https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1 |
-     while read line; do
-      if [[ $line =~ HTTP ]] ; then
-          status=`echo $line | tr -d -c 0-9`
-          case $status in
-             200) echo "Annotation Successfull" ;;
-             *)   echo "$status!!  Annotation Failed: status not defined ... aborting" && exit 123 ;;
-          esac
-       fi
-       if [[ $line =~ "error code" ]] ; then
-         echo $line && exit 123
-       fi
-     done
+     --data-binary "'$data'"\
+     "https://mpulse.soasta.com/concerto/mpulse/api/annotations/v1" | jq '.["id"]' | tr -d '"')
+
+if [ -n "$annotationID" ]; then
+  echo $annotationID > annotationID.txt
+fi
