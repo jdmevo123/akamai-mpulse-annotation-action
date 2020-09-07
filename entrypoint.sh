@@ -8,7 +8,7 @@ title="test" #$2
 time="1599439052853" #$3
 text="TestingAction" #$4
 domainIds="" #$5
-annotationID = "" #$6
+annotationID="" #$6
 
 # Get API Token SSO
 authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
