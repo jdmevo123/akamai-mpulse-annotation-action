@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Akamai logo" width="400" height="400" src="https://www.eiseverywhere.com/file_uploads/8fca94ae15da82d17d76787b3e6a987a_logo_akamai-developer-experience-2-OL-RGB.png"/>
+  <img alt="Akamai logo" width="300" height="300" src="https://www.eiseverywhere.com/file_uploads/8fca94ae15da82d17d76787b3e6a987a_logo_akamai-developer-experience-2-OL-RGB.png"/>
   <h3 align="center">GitHub Action to submit annotations to Akamai mPulse</h3>
   <p align="center">
     <img alt="GitHub license" src="https://badgen.net/github/license/jdmevo123/akamai-mpulse-annotation-action?cache=300&color=green"/>
@@ -10,7 +10,7 @@
 
 This action calls the Akamai Api's to submit <a href="https://developer.akamai.com/akamai-mpulse-real-user-monitoring-solution" target="_blank">mPulse</a> annotations to the Akamai platform. 
 <p align="center">
-    <img alt="mPulse" width="793" height="375" src="https://developer.akamai.com/sites/default/files/styles/hero/public/2018-11/banner-mpulse-R2.png?itok=TK3ibVct"/>
+    <img alt="mPulse" width="793" src="https://developer.akamai.com/sites/default/files/styles/hero/public/2018-11/banner-mpulse-R2.png?itok=TK3ibVct"/>
 </p>
 
 ## Usage
