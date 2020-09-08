@@ -5,7 +5,7 @@ set -o pipefail
 # Set Variables
 apiToken=$1
 title=$2
-text=$3
+text=$($3 | tr '\n' ',')
 time=$(date +%s000)
 
 echo "text = $text"
