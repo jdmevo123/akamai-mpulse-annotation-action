@@ -8,7 +8,7 @@ title=$2
 text=$3
 time=$(date +%s000)
 #fix commit message
-text=$(echo $text | tr '\n' ',')
+text=$(echo $text | tr -d '\n')
 echo "text = $text"
 
 if [ -n "$4" ]; then
