@@ -60,7 +60,7 @@ steps:
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
-          text: ${{ github.event.head_commit.message }}
+          text: ${{ toJson(github.event.head_commit.message) }}
           tennant: "" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank. 
 ```
 If you wish to submit domain id's, use the following YAML:
@@ -71,7 +71,7 @@ steps:
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
-          text: ${{ github.event.head_commit.message }}
+          text: ${{ toJson(github.event.head_commit.message) }}
           tennant: "" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank. 
           domainIds: "123,124" #Optional  #Domain ID's split by comma. i.e. "123,124"
 ```
