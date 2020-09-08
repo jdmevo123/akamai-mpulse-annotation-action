@@ -13,5 +13,5 @@ jobs:
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
-          text: ${{ github.event.commits }}
+          text: "${{ github.event.head_commit.message }}"
           tennant: ""
