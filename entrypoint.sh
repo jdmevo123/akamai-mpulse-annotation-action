@@ -5,9 +5,10 @@ set -o pipefail
 # Set Variables
 apiToken=$1
 title=$2
-text=$($3 | tr '\n' ',')
+text=$3
 time=$(date +%s000)
-
+#fix commit message
+text=$($text | tr '\n' ',')
 echo "text = $text"
 
 if [ -n "$4" ]; then
