@@ -10,7 +10,7 @@
 
 This action calls the Akamai Api's to submit <a href="https://developer.akamai.com/akamai-mpulse-real-user-monitoring-solution" target="_blank">mPulse</a> annotations to the Akamai platform. 
 <p align="center">
-    <img alt="mPulse" width="793" height="375" src="https://developer.akamai.com/sites/default/files/styles/hero/public/2018-11/banner-mpulse-R2.png?itok=TK3ibVct"/>
+    <img alt="mPulse" src="blob/master/images/example-annotation.png"/>
 </p>
 
 ## Usage
