@@ -11,6 +11,9 @@ inputs:
   text:
     description: 'Additional information'
     required: true
+  tennant:
+    description: 'Tennant name'
+    required: true
   domainIds:
     description: 'Domain id seperated via a comma. i.e. 123,456. Leave BLANK if you wish to apply across all domains'
     required: false
@@ -21,6 +24,7 @@ runs:
     - ${{ inputs.Auth-Token}}
     - ${{ inputs.title }}
     - ${{ inputs.text }}
+    - ${{ inputs.tennant }}
     - ${{ inputs.domainIds }}
 branding:
   color: orange
