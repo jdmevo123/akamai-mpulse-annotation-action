@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Akamai logo" width="300" height="300" src="https://www.eiseverywhere.com/file_uploads/8fca94ae15da82d17d76787b3e6a987a_logo_akamai-developer-experience-2-OL-RGB.png"/>
+  <img alt="Akamai logo" width="320" height="320" src="https://www.eiseverywhere.com/file_uploads/8fca94ae15da82d17d76787b3e6a987a_logo_akamai-developer-experience-2-OL-RGB.png"/>
   <h3 align="center">GitHub Action to submit annotations to Akamai mPulse</h3>
   <p align="center">
     <img alt="GitHub license" src="https://badgen.net/github/license/jdmevo123/akamai-mpulse-annotation-action?cache=300&color=green"/>
