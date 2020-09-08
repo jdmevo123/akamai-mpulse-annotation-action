@@ -8,15 +8,24 @@ title=$2
 text=$3
 time=$(date +%s000)
 
+echo "text = $text"
+
 if [ -n "$4" ]; then
-  domainIds=$4
+  apiData='{ "apiToken":"'${apiToken}'", "tenant": "'$4'" }'
 fi
 if [ -z "$4" ]; then
+  apiData='{ "apiToken":"'${apiToken}'" }'
+fi
+if [ -n "$5" ]; then
+  domainIds=$5
+fi
+if [ -z "$5" ]; then
   domainIds=""
 fi
+echo "APIData = $apiData"
 
 # Get API Token SSO
-authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary '{"apiToken":"'${apiToken}'"}' \
+authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary "$apiData" \
   "https://mpulse.soasta.com/concerto/services/rest/RepositoryService/v1/Tokens" | jq '.["token"]' | tr -d '"')
 # Execute Annotation
 if [ "$domainIds" == "" ]; then
