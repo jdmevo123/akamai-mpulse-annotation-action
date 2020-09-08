@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: git
-        run: echo "git message is ${{ toJson(github.event.head_commit.message) }}"
+        run: echo "git message is ${{ toJson(github.event.head_commit.message) | tr '\n' ',' }}"
         
   validate:
     runs-on: ubuntu-latest
@@ -20,5 +20,5 @@ jobs:
         with:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
-          text: '${{ toJson(github.event.head_commit.message) }}'
+          text: '${{ toJson(github.event.head_commit.message) | tr '\n' ',' }}'
           tennant: ""
