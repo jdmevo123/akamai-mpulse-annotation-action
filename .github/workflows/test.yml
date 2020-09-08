@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: git
-        run: echo "git message is ${{ github.event.head_commit }}"
+        run: echo "git message is ${{ toJson(github.event.head_commit) }}"
         
   validate:
     runs-on: ubuntu-latest
