@@ -9,7 +9,6 @@ text=$3
 time=$(date +%s000)
 #fix commit message
 text=$(echo "$text" | tr -d '\n' | sed -e 's/^"//' -e 's/"$//')
-echo "text = $text"
 
 if [ -n "$4" ]; then
   apiData='{ "apiToken":"'${apiToken}'", "tenant": "'$4'" }'
@@ -23,7 +22,6 @@ fi
 if [ -z "$5" ]; then
   domainIds=""
 fi
-echo "APIData = $apiData"
 
 # Get API Token SSO
 authToken=$(curl -X PUT -H "Content-type: application/json" --data-binary "$apiData" \
