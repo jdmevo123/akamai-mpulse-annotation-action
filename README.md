@@ -41,13 +41,13 @@ current time in UTC milliseconds
 **Required** 
 Text: Currently set to use git commit message
 
-### `domainIds`
+### `tennant`
 **Required** 
-List of domain id's: use a comma to seperate. i.e 123,123. Leave blank if not specifying
+Tennant: The tennant you wish to assign the annotation to
 
-### `annotationID`
-**Required** 
-annotationID: Leave blank if the begining of the pipeline, or pull in via the saved artifact
+### `domainIds`
+**Optional** 
+List of domain id's: use a comma to seperate. i.e 123,123. Leave blank if not specifying
 
 ## `workflow.yml` Example
 
@@ -61,6 +61,7 @@ steps:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
           text: ${{ github.event.head_commit.message }}
+          tennant: "" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank. 
 ```
 If you wish to submit domain id's, use the following YAML:
 ```yaml
@@ -71,6 +72,7 @@ steps:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
           text: ${{ github.event.head_commit.message }}
+          tennant: "" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank. 
           domainIds: "123,124" #Optional  #Domain ID's split by comma. i.e. "123,124"
 ```
 
